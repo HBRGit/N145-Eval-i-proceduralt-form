@@ -69,7 +69,10 @@ double Eval(string formel)
     //Console.WriteLine("Operators:");
     //foreach (var op in stOperators)
     //    Console.WriteLine(op);
-
+    if (!(stNumbers.Count- stOperators.Count==1))
+    {
+        throw new ArgumentException("Antal tal og operatorer stemmer ikke overens");
+    }
     double result = double.Parse(stNumbers[0]);
     for (int i = 0; i < stOperators.Count; i++)
     {
@@ -94,13 +97,18 @@ double Eval(string formel)
     return result;
 }
 
-Console.WriteLine(Eval("10 + 5.5 * 2 / 0.5 - 3")); // correct output: 29 Returns 59 :( It doesn't know how to multiply and divide before it can add and subtract. The order of the factors is NOT equally valid
-Console.WriteLine(Eval("1+2+3")); // Output: 6
-Console.WriteLine(Eval("10+20")); // Output: 30
-Console.WriteLine(Eval("5")); // Output: 5
-Console.WriteLine(Eval("1+1+1+1+1")); // Output: 5
-Console.WriteLine(Eval("1 + 1 +1+ 1+1")); // Output: 5
-Console.WriteLine(Eval("1+1+1+1+1+1+1+1+1")); // Output: 9
+//Console.WriteLine(Eval("10 + 5.5 * 2 / 0.5 - 3")); // correct output: 29 Returns 59 :( It doesn't know how to multiply and divide before it can add and subtract. The order of the factors is NOT equally valid
+//Console.WriteLine(Eval("1+2+3")); // Output: 6
+//Console.WriteLine(Eval("10+20")); // Output: 30
+//Console.WriteLine(Eval("5")); // Output: 5
+//Console.WriteLine(Eval("1+1+1+1+1")); // Output: 5
+//Console.WriteLine(Eval("1 + 1 +1+ 1+1")); // Output: 5
+//Console.WriteLine(Eval("1+1+1+1+1+1+1+1+1")); // Output: 9
+Console.WriteLine(Eval("-5--1")); // Output: -4
+
+// Error handling
+//Console.WriteLine(Eval("5+")); // Output: Error
+Console.WriteLine(Eval("")); // Output: Same Error
 
 Console.ReadKey();
 
